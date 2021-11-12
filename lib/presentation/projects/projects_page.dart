@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class ProjectsPage extends StatefulWidget {
-  // const ProjectsPage({ Key? key }) : super(key: key);
+  ProjectsPage({Key key}) : super(key: key);
 
   @override
   _ProjectsPageState createState() => _ProjectsPageState();
@@ -43,9 +43,9 @@ class _ProjectsPageState extends State<ProjectsPage> {
         _getMoreData();
       }
     });
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      _onProgress();
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) async {
+    //   _onProgress();
+    // });
   }
 
   _getMoreData() {
@@ -87,6 +87,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                       colors: [
                         const Color(0xFF3366FF),
                         const Color(0xFFC300FF),
+                        // const Color(0xFF979797),
                       ],
                       begin: const FractionalOffset(0.0, 0.0),
                       end: const FractionalOffset(1.0, 0.0),
@@ -105,6 +106,15 @@ class _ProjectsPageState extends State<ProjectsPage> {
                             // crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
+                              IconButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  icon: Icon(
+                                    Icons.arrow_back,
+                                    color: Colors.white,
+                                  )),
+                              Spacer(),
                               InkWell(
                                 onTap: () {
                                   _onProgress();
