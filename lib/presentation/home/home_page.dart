@@ -143,6 +143,17 @@ class _HomePageState extends State<HomePage> {
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(100),
+                                          // child: Container(
+                                          //     color: Colors.black54,
+                                          //     child: Center(
+                                          //       child: Text(
+                                          //         "Profile Picture",
+                                          //         style: TextStyle(
+                                          //             color: Colors.white,
+                                          //             fontWeight:
+                                          //                 FontWeight.w500),
+                                          //       ),
+                                          //     )),
                                           child: Image(
                                             image: NetworkImage(
                                                 "https://media-exp1.licdn.com/dms/image/C5103AQHjVhRuL3yXgw/profile-displayphoto-shrink_200_200/0/1544581409377?e=1640217600&v=beta&t=LdMRsw9u4qPU6oaf4iQloowmQXWDgta6VRtU0vqy5Po"),
@@ -348,14 +359,7 @@ class NavButton extends StatelessWidget {
             //       type: PageTransitionType.fade,
             //       child: ProjectsPage(),
             //     ));
-            // Navigator.push(
-            //   // or pushReplacement, if you need that
-            //   context,
-            //   FadeInRoute(
-            //     routeName: '/projects',
-            //     page: ProjectsPage(),
-            //   ),
-            // );
+
             Navigator.pushNamed(context, '/projects', arguments: {'id': 1});
             break;
           case "skills":
@@ -365,14 +369,7 @@ class NavButton extends StatelessWidget {
             //       type: PageTransitionType.fade,
             //       child: SkillsPage(),
             //     ));
-            // Navigator.push(
-            //   // or pushReplacement, if you need that
-            //   context,
-            //   FadeInRoute(
-            //     routeName: '/skills',
-            //     page: SkillsPage(),
-            //   ),
-            // );
+
             Navigator.pushNamed(context, '/skills', arguments: {'id': 1});
             break;
           default:
@@ -385,31 +382,34 @@ class NavButton extends StatelessWidget {
             break;
         }
       },
-      child: Material(
-        borderRadius: BorderRadius.circular(32.0),
-        shadowColor: Colors.black,
-        elevation: 5,
-        child: Container(
-          alignment: Alignment.center,
-          width: 100,
-          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            gradient: LinearGradient(
-              colors: [
-                const Color(0xFFC300FF),
-                const Color(0xFF3366FF),
-              ],
-              begin: const FractionalOffset(0.0, 0.0),
-              end: const FractionalOffset(1.0, 0.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp,
-            ),
+      child: Container(
+        alignment: Alignment.center,
+        width: 100,
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          // color: Colors.white.withOpacity(0.5),
+          gradient: LinearGradient(
+            colors: [
+              const Color(0xFFC300FF).withOpacity(0.5),
+              const Color(0xFF3366FF).withOpacity(0.5),
+            ],
+            begin: const FractionalOffset(0.0, 0.0),
+            end: const FractionalOffset(1.0, 0.0),
+            stops: [0.0, 1.0],
+            tileMode: TileMode.clamp,
           ),
-          child: Text(
-            btnTitle,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
-          ),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black38,
+                blurRadius: 10,
+                spreadRadius: 1,
+                offset: Offset(0, 4))
+          ],
+        ),
+        child: Text(
+          btnTitle,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
         ),
       ),
     );
