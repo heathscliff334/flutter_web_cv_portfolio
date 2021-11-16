@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ProjectsShimmerWidget extends StatelessWidget {
-  const ProjectsShimmerWidget({
+class ProjectsPortraitShimmerWidget extends StatelessWidget {
+  const ProjectsPortraitShimmerWidget({
     Key key,
     @required this.dynHeight,
   }) : super(key: key);

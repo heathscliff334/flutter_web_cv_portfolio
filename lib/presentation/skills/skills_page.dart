@@ -44,6 +44,7 @@ class _SkillsPageState extends State<SkillsPage> {
       if (isLandscape == true) {
         dynHeight = MediaQuery.of(context).size.height / 1.3;
         dynWidth = MediaQuery.of(context).size.width / 1.7;
+        // dynWidth = MediaQuery.of(context).size.width / 2.5;
       } else {
         dynHeight = MediaQuery.of(context).size.height / 1.1;
         dynWidth = MediaQuery.of(context).size.width / 1.1;
@@ -101,99 +102,82 @@ class _SkillsPageState extends State<SkillsPage> {
                       return Container(
                         padding:
                             EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-                        child: LiquidPullToRefresh(
-                          color: Colors.transparent,
-                          backgroundColor: Colors.white60,
-                          springAnimationDurationInMilliseconds: 500,
-                          showChildOpacityTransition: false,
-                          onRefresh: () async {
-                            context.read<SkillsCubit>().getSkills();
-                          },
-                          child: CustomScrollView(
-                            slivers: [
-                              SliverList(
-                                  delegate: SliverChildListDelegate([
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      IconButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          icon: Icon(
-                                            Icons.arrow_back,
-                                            color: Colors.white,
-                                          )),
-                                      Spacer(),
-                                    ],
-                                  ),
+                        child: CustomScrollView(
+                          slivers: [
+                            SliverList(
+                                delegate: SliverChildListDelegate([
+                              Container(
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        icon: Icon(
+                                          Icons.arrow_back,
+                                          color: Colors.white,
+                                        )),
+                                    Spacer(),
+                                  ],
                                 ),
-                                ItemDividerWidget(marginBtm: 10),
-                                Text(
-                                  "Skills",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                    fontFamily: 'Nasalization',
-                                  ),
+                              ),
+                              ItemDividerWidget(marginBtm: 10),
+                              Text(
+                                "Skills",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                  color: Colors.white,
+                                  fontFamily: 'Nasalization',
                                 ),
-                                ItemDividerWidget(marginBtm: 10),
-                                Container(
+                              ),
+                              ItemDividerWidget(marginBtm: 10),
+                              Container(
+                                // color: Colors.black,
+                                // width: 100,
+                                width: double.infinity,
+                                padding: (isLandscape == true)
+                                    ? EdgeInsets.symmetric(
+                                        horizontal: dynHeight / 4)
+                                    : EdgeInsets.zero,
+
+                                height: dynHeight / 2.5,
+                                child: (_skillList != null)
+                                    ? ListStarsWidget(
+                                        listItem: _skillList,
+                                        itemType: "skills")
+                                    : Container(
+                                        child: StarsShimmerWidget(),
+                                      ),
+                              ),
+                              SizedBox(height: 15),
+                              ItemDividerWidget(marginBtm: 10),
+                              Text(
+                                "Languages",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                  color: Colors.white,
+                                  fontFamily: 'Nasalization',
+                                ),
+                              ),
+                              ItemDividerWidget(marginBtm: 10),
+                              Container(
+                                  padding: (isLandscape == true)
+                                      ? EdgeInsets.symmetric(
+                                          horizontal: dynHeight / 4)
+                                      : EdgeInsets.zero,
                                   width: double.infinity,
-                                  height: dynHeight / 2.5,
-                                  child: (_skillList != null)
+                                  height: dynHeight / 5,
+                                  child: (_languagesList != null)
                                       ? ListStarsWidget(
-                                          listItem: _skillList,
-                                          itemType: "skills")
-                                      : Container(
-                                          child: StarsShimmerWidget(),
-                                        ),
-                                ),
-                                SizedBox(height: 15),
-                                ItemDividerWidget(marginBtm: 10),
-                                Text(
-                                  "Languages",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                    fontFamily: 'Nasalization',
-                                  ),
-                                ),
-                                ItemDividerWidget(marginBtm: 10),
-                                Container(
-                                    width: double.infinity,
-                                    height: dynHeight / 4.5,
-                                    child: (_languagesList != null)
-                                        ? ListStarsWidget(
-                                            listItem: _languagesList,
-                                            itemType: "languages")
-                                        : Container(
-                                            child: StarsShimmerWidget())),
-                                // (state is SkillsGetSuccess)
-                                //     ? (isLandscape == true)
-                                //         ? LandscapeView(
-                                //             listSkills: _listSkills,
-                                //             listStars: _listStars,
-                                //             listSkills2: _listSkills2,
-                                //             listStars2: _listStars2,
-                                //             listLanguages: _listLanguages,
-                                //             dynWidth: dynWidth,
-                                //             listStarsLanguages:
-                                //                 _listStarsLanguages)
-                                //         : PortraitView(
-                                //             skillList: _skillList,
-                                //             listLanguages: _listLanguages,
-                                //             dynWidth: dynWidth,
-                                //             listStarsLanguages:
-                                //                 _listStarsLanguages)
-                                //     : Container(),
-                              ]))
-                            ],
-                          ),
+                                          listItem: _languagesList,
+                                          itemType: "languages")
+                                      : Container(child: StarsShimmerWidget())),
+                            ]))
+                          ],
                         ),
                       );
                     }),

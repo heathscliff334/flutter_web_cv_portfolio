@@ -1,19 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web/presentation/widgets/projects_shimmer_widget.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:flutter_web/presentation/widgets/projects_portrait_shimmer_widget.dart';
+
 import 'package:shimmer/shimmer.dart';
 
-class ListProjectsWidget extends StatelessWidget {
-  const ListProjectsWidget({
+class ListProjectsPortraitWidget extends StatelessWidget {
+  const ListProjectsPortraitWidget({
     Key key,
+    @required ScrollController scrollController,
     @required projectList,
     @required this.dynHeight,
     @required this.languageEn,
-  })  : _projectList = projectList,
+  })  : _scrollController = scrollController,
+        _projectList = projectList,
         super(key: key);
 
   final _projectList;
+  final ScrollController _scrollController;
   final double dynHeight;
   final bool languageEn;
 
@@ -23,11 +26,12 @@ class ListProjectsWidget extends StatelessWidget {
       child: (_projectList != null)
           ? ListView.builder(
               padding: EdgeInsets.zero,
-              itemCount: _projectList.length + 1,
+              // itemCount: _projectList.length + 1,
+              itemCount: _projectList.length,
               itemBuilder: (context, i) {
-                if (i == _projectList.length) {
-                  return CupertinoActivityIndicator();
-                }
+                // if (i == _projectList.length) {
+                //   return CupertinoActivityIndicator();
+                // }
                 return Container(
                   width: double.infinity,
                   height: dynHeight / 2,
@@ -75,7 +79,8 @@ class ListProjectsWidget extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: NetworkImage(
-                                        "https://picsum.photos/id/1$i/200"),
+                                        // "https://picsum.photos/id/1$i/200",
+                                        "https://www.poltektranssdp-palembang.ac.id/uploads/no-image.jpg"),
                                     fit: BoxFit.cover,
                                   ),
                                   // color:
@@ -159,7 +164,7 @@ class ListProjectsWidget extends StatelessWidget {
                   ),
                 );
               })
-          : ProjectsShimmerWidget(dynHeight: dynHeight),
+          : ProjectsPortraitShimmerWidget(dynHeight: dynHeight),
     );
   }
 }

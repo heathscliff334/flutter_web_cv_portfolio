@@ -7,7 +7,8 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_web/application/projects/cubit/projects_cubit.dart';
 import 'package:flutter_web/presentation/projects/landscape/landscape_projects_view.dart';
 import 'package:flutter_web/presentation/projects/portrait/portrait_projects_view.dart';
-import 'package:flutter_web/presentation/widgets/list_projects_widget.dart';
+import 'package:flutter_web/presentation/widgets/list_projects_landscape_widget.dart';
+import 'package:flutter_web/presentation/widgets/list_projects_portrait_widget.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -33,7 +34,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
     _timer = new Timer.periodic(oneSec, (Timer timer) {
       if (_startTime == 0) {
         // refreshWithTimer(30, true);
-        _onProgress();
+        onProgress();
       } else {
         // setState(() {
         _startTime--;
@@ -43,7 +44,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
     });
   }
 
-  void _onProgress() async {
+  void onProgress() async {
     showDialog(
         context: context,
         builder: (BuildContext context) => CupertinoAlertDialog(
@@ -164,37 +165,44 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                           color: Colors.white,
                                         )),
                                     Spacer(),
-                                    Bounceable(
-                                      onTap: () {
-                                        // _onProgress();
-                                        print("ID tapped!");
-                                        languageEn = false;
-                                        setState(() {});
-                                      },
-                                      child: Text("ID",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20,
-                                              decoration: (languageEn == false)
-                                                  ? TextDecoration.overline
-                                                  : TextDecoration.none)),
+                                    MouseRegion(
+                                      cursor: SystemMouseCursors.click,
+                                      child: Bounceable(
+                                        onTap: () {
+                                          // _onProgress();
+                                          print("ID tapped!");
+                                          languageEn = false;
+                                          setState(() {});
+                                        },
+                                        child: Text("ID",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                decoration: (languageEn ==
+                                                        false)
+                                                    ? TextDecoration.overline
+                                                    : TextDecoration.none)),
+                                      ),
                                     ),
                                     Text(" | ",
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 26)),
-                                    Bounceable(
-                                      onTap: () {
-                                        print("EN tapped!");
-                                        languageEn = true;
-                                        setState(() {});
-                                      },
-                                      child: Text("EN",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20,
-                                              decoration: (languageEn == true)
-                                                  ? TextDecoration.overline
-                                                  : TextDecoration.none)),
+                                    MouseRegion(
+                                      cursor: SystemMouseCursors.click,
+                                      child: Bounceable(
+                                        onTap: () {
+                                          print("EN tapped!");
+                                          languageEn = true;
+                                          setState(() {});
+                                        },
+                                        child: Text("EN",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                decoration: (languageEn == true)
+                                                    ? TextDecoration.overline
+                                                    : TextDecoration.none)),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -204,15 +212,16 @@ class _ProjectsPageState extends State<ProjectsPage> {
                               ),
                               (isLandscape == true)
                                   ?
-                                  // For browser
-                                  LandscapeProjectsView(
+                                  // For browser landscape
+                                  ListProjectsLandscapeWidget(
                                       scrollController: _scrollController,
-                                      myList: myList,
+                                      projectList: _projectList,
                                       dynHeight: dynHeight,
-                                      currentMax: _currentMax)
+                                      languageEn: languageEn)
                                   :
                                   // For Phone Screen
-                                  ListProjectsWidget(
+                                  ListProjectsPortraitWidget(
+                                      scrollController: _scrollController,
                                       projectList: _projectList,
                                       dynHeight: dynHeight,
                                       languageEn: languageEn),
