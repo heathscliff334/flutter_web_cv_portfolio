@@ -8,8 +8,8 @@ class SkillsRepository {
     Response _response;
 
     try {
-      _response =
-          await _dio.get('http://flashcardjp.com:5000/api/online_cv/skills');
+      _response = await _dio
+          .get('https://laurenscodes.space:5000/api/online_cv/skills');
 
       // SkillsResponse _getSkill = SkillsResponse.fromJson(_response.data);
       print("${_response.statusCode}");

@@ -9,6 +9,7 @@ import 'package:flutter_web/application/home/cubit/home_cubit.dart';
 import 'package:flutter_web/presentation/home/test_page.dart';
 import 'package:flutter_web/presentation/projects/projects_page.dart';
 import 'package:flutter_web/presentation/skills/skills_page.dart';
+import 'package:flutter_web/presentation/widgets/home_shimmer_widget.dart';
 import 'package:flutter_web/presentation/widgets/item_divider_widget.dart';
 import 'package:flutter_web/presentation/widgets/nav_button_widget.dart';
 import 'package:flutter_web/presentation/widgets/sosmed_button_widget.dart';
@@ -372,7 +373,11 @@ class _HomePageState extends State<HomePage> {
                           ),
                         );
                       }
-                      return Container();
+
+                      return HomeShimmerWidget(
+                          isLandscape: isLandscape,
+                          dynHeight: dynHeight,
+                          dynWidth: dynWidth);
                     },
                   ),
                 ),

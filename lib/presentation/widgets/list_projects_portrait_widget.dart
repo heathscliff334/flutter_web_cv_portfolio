@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_web/presentation/widgets/projects_portrait_shimmer_widget.dart';
 
 import 'package:shimmer/shimmer.dart';
@@ -46,10 +47,10 @@ class ListProjectsPortraitWidget extends StatelessWidget {
                   )),
                   child: Material(
                     color: Colors.transparent,
-                    child: InkWell(
-                      splashColor: Colors.blue[200],
+                    child: Bounceable(
                       onTap: () {
-                        print("Data $i is clicked!");
+                        Navigator.pushNamed(context, '/projects/detail',
+                            arguments: {'id': 1});
                       },
                       child: Column(
                         children: [
@@ -78,9 +79,11 @@ class ListProjectsPortraitWidget extends StatelessWidget {
                                 height: 150,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: NetworkImage(
-                                        // "https://picsum.photos/id/1$i/200",
-                                        "https://www.poltektranssdp-palembang.ac.id/uploads/no-image.jpg"),
+                                    // image: NetworkImage(
+                                    //     // "https://picsum.photos/id/1$i/200",
+                                    //     "https://www.poltektranssdp-palembang.ac.id/uploads/no-image.jpg"),
+                                    image: AssetImage(
+                                        "assets/images/no-image.jpg"),
                                     fit: BoxFit.cover,
                                   ),
                                   // color:

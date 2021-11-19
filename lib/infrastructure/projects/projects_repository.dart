@@ -7,8 +7,8 @@ class ProjectsRepository {
   Future<Either<String, ProjectsResponse>> getProjectsList() async {
     Response _response;
     try {
-      _response =
-          await _dio.get("http://flashcardjp.com:5000/api/online_cv/projects");
+      _response = await _dio
+          .get("https://laurenscodes.space:5000/api/online_cv/projects");
       // print(_response);
       ProjectsResponse _getProject = ProjectsResponse.fromJson(_response.data);
       return right(_getProject);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web/presentation/home/home_page.dart';
+import 'package:flutter_web/presentation/projects/projects_details_page.dart';
 import 'package:flutter_web/presentation/projects/projects_page.dart';
 
 import 'package:flutter_web/presentation/skills/skills_page.dart';
@@ -20,6 +21,7 @@ class _AppState extends State<App> {
         "/": (context) => HomePage(),
         "/skills": (context) => SkillsPage(),
         "/projects": (context) => ProjectsPage(),
+        "/projects/detail": (context) => ProjectsDetailsPage(),
       },
       // onGenerateRoute: (settings) {
       //   if (settings.name == "/projects") {

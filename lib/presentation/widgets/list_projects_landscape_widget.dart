@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_web/presentation/projects/projects_page.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -45,8 +46,11 @@ class ListProjectsLandscapeWidget extends StatelessWidget {
                     )),
                     child: Material(
                       color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {},
+                      child: Bounceable(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/projects/detail',
+                              arguments: {'id': 1});
+                        },
                         child: Row(
                           children: [
                             Container(
@@ -71,9 +75,14 @@ class ListProjectsLandscapeWidget extends StatelessWidget {
                                 borderRadius: BorderRadius.only(
                                     topRight: Radius.circular(30),
                                     bottomRight: Radius.circular(30)),
-                                child: Image.network(
+                                // child: Image.network(
+                                //   // "https://picsum.photos/id/1$i/200",
+                                //   "https://www.poltektranssdp-palembang.ac.id/uploads/no-image.jpg",
+                                //   fit: BoxFit.cover,
+                                // ),
+                                child: Image.asset(
                                   // "https://picsum.photos/id/1$i/200",
-                                  "https://www.poltektranssdp-palembang.ac.id/uploads/no-image.jpg",
+                                  "assets/images/no-image.jpg",
                                   fit: BoxFit.cover,
                                 ),
                               ),

@@ -10,8 +10,8 @@ class HomeRepository {
     Response _response;
 
     try {
-      _response =
-          await _dio.get('http://flashcardjp.com:5000/api/online_cv/home/1');
+      _response = await _dio
+          .get('https://laurenscodes.space:5000/api/online_cv/home/1');
 
       HomeResponse _getHome = HomeResponse.fromJson(_response.data);
       return right(_getHome);
