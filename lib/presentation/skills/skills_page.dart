@@ -103,6 +103,7 @@ class _SkillsPageState extends State<SkillsPage> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 25, vertical: 20),
                         child: CustomScrollView(
+                          physics: BouncingScrollPhysics(),
                           slivers: [
                             SliverList(
                                 delegate: SliverChildListDelegate([

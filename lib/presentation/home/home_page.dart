@@ -358,15 +358,24 @@ class _HomePageState extends State<HomePage> {
                               SliverFillRemaining(
                                 hasScrollBody: false,
                                 child: Container(
-                                  margin: EdgeInsets.only(bottom: 15),
+                                  padding: EdgeInsets.only(bottom: 20),
                                   // color: Colors.red,
                                   width: dynWidth,
-                                  height: 20,
-                                  child: Center(
-                                      child: Text(
-                                    "2021 \u00a9 Kevin Laurence. Powered by Flutter.",
-                                    style: TextStyle(color: Colors.white70),
-                                  )),
+                                  // height: 20,
+                                  // child: Center(
+                                  //     child: Text(
+                                  //   "2021 \u00a9 Kevin Laurence. Powered by Flutter.",
+                                  //   style: TextStyle(color: Colors.white70),
+                                  // )),
+                                  child: Column(
+                                    children: [
+                                      Spacer(),
+                                      Text(
+                                        "2021 \u00a9 Kevin Laurence. Powered by Flutter.",
+                                        style: TextStyle(color: Colors.white70),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
