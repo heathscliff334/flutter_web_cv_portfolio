@@ -95,11 +95,15 @@ class _HomePageState extends State<HomePage> {
                       if (state is HomeInitial) {
                         context.read<HomeCubit>().getHomes();
                       } else if (state is HomeLoading) {
-                        return Container(
-                          child: Center(
-                            child: CupertinoActivityIndicator(),
-                          ),
-                        );
+                        // return Container(
+                        //   child: Center(
+                        //     child: CupertinoActivityIndicator(),
+                        //   ),
+                        // );
+                        return HomeShimmerWidget(
+                            isLandscape: isLandscape,
+                            dynHeight: dynHeight,
+                            dynWidth: dynWidth);
                       } else if (state is HomeSuccess) {
                         return Container(
                           // padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
@@ -344,8 +348,9 @@ class _HomePageState extends State<HomePage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     NavButtonWidget(
-                                        btnTitle: "Projects",
-                                        navRoute: "projects"),
+                                      btnTitle: "Projects",
+                                      navRoute: "projects",
+                                    ),
                                     SizedBox(width: 10),
                                     NavButtonWidget(
                                         btnTitle: "Skills", navRoute: "skills"),

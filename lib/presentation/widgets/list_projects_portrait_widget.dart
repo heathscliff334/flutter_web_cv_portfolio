@@ -50,7 +50,9 @@ class ListProjectsPortraitWidget extends StatelessWidget {
                     child: Bounceable(
                       onTap: () {
                         Navigator.pushNamed(context, '/projects/detail',
-                            arguments: {'id': 1});
+                            arguments: {'detail': _projectList[i]});
+                        // Navigator.pushNamed(context, '/projects/detail',
+                        //     arguments: {'id': 1});
                       },
                       child: Column(
                         children: [

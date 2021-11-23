@@ -7,6 +7,7 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_web/application/projects/cubit/projects_cubit.dart';
 import 'package:flutter_web/presentation/projects/landscape/landscape_projects_view.dart';
 import 'package:flutter_web/presentation/projects/portrait/portrait_projects_view.dart';
+import 'package:flutter_web/presentation/widgets/item_divider_widget.dart';
 import 'package:flutter_web/presentation/widgets/list_projects_landscape_widget.dart';
 import 'package:flutter_web/presentation/widgets/list_projects_portrait_widget.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
@@ -207,9 +208,10 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                   ],
                                 ),
                               ),
-                              SizedBox(
-                                height: 15,
-                              ),
+                              // SizedBox(
+                              //   height: 15,
+                              // ),
+                              ItemDividerWidget(marginBtm: 10),
                               (isLandscape == true)
                                   ?
                                   // For browser landscape

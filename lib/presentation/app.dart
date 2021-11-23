@@ -35,6 +35,47 @@ class _AppState extends State<App> {
       //   // Unknown route
       //   return MaterialPageRoute(builder: (_) => ProjectsPage());
       // },
+
+      // ignore: missing_return
+      // onGenerateRoute: (settings) {
+
+      // switch (settings.name) {
+      //   case '/':
+      //     print(pathComponents);
+      //     return MaterialPageRoute(
+      //       builder: (context) => HomePage(),
+      //     );
+      //     break;
+      //   case '/skills':
+      //     print(pathComponents);
+      //     return MaterialPageRoute(
+      //       builder: (context) => SkillsPage(),
+      //     );
+      //     break;
+      //   case '/projects':
+      //     print(pathComponents);
+      //     return MaterialPageRoute(
+      //       builder: (context) => ProjectsPage(),
+      //     );
+      //     break;
+      //   case '/projects/detail':
+      //     print(pathComponents);
+      //     return MaterialPageRoute(
+      //       builder: (context) => ProjectsDetailsPage(
+      //           // arguments: pathComponents.last,
+      //           ),
+      //     );
+      //     break;
+      //   default:
+      //     print(pathComponents);
+      //     return MaterialPageRoute(
+      //       // builder: (context) => HomePage(),
+      //       builder: (context) => HomePage(
+      //           // arguments: pathComponents.last,
+      //           ),
+      //     );
+      // }
+      // },
       debugShowCheckedModeBanner: false,
       title: "CV & Portfolio - Kevin Laurence",
       // home: Scaffold(

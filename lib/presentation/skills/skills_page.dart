@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_web/application/skills/cubit/skills_cubit.dart';
 
-import 'package:flutter_web/presentation/skills/portrait/portrait_view.dart';
 import 'package:flutter_web/presentation/widgets/item_divider_widget.dart';
 import 'package:flutter_web/presentation/widgets/list_stars_widget.dart';
 import 'package:flutter_web/presentation/widgets/stars_shimmer_widget.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:loading_indicator/loading_indicator.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class SkillsPage extends StatefulWidget {
-  // const SkillsPage({ Key? key }) : super(key: key);
+  const SkillsPage({Key key}) : super(key: key);
 
   @override
   _SkillsPageState createState() => _SkillsPageState();
@@ -23,12 +18,6 @@ class _SkillsPageState extends State<SkillsPage> {
   bool isLandscape;
   double dynHeight, dynWidth;
   var _skillList, _languagesList;
-  List<String> _listLanguages = [
-    "Indonesia",
-    "English",
-    "Japanese",
-  ];
-  List<double> _listStarsLanguages = [5, 3, 2.5];
 
   @override
   void initState() {
@@ -37,6 +26,8 @@ class _SkillsPageState extends State<SkillsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context).settings.arguments as Map;
+    print("ID : ${args['id']}");
     setState(() {
       // To detect the orientation of the screen (browser) to asign a dynamic height and width
       isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
@@ -102,82 +93,105 @@ class _SkillsPageState extends State<SkillsPage> {
                       return Container(
                         padding:
                             EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-                        child: CustomScrollView(
-                          physics: BouncingScrollPhysics(),
-                          slivers: [
-                            SliverList(
-                                delegate: SliverChildListDelegate([
-                              Container(
-                                child: Row(
-                                  children: [
-                                    IconButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        icon: Icon(
-                                          Icons.arrow_back,
-                                          color: Colors.white,
-                                        )),
-                                    Spacer(),
-                                  ],
-                                ),
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Row(
+                                children: [
+                                  IconButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      icon: Icon(
+                                        Icons.arrow_back,
+                                        color: Colors.white,
+                                      )),
+                                  Spacer(),
+                                ],
                               ),
-                              ItemDividerWidget(marginBtm: 10),
-                              Text(
-                                "Skills",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24,
-                                  color: Colors.white,
-                                  fontFamily: 'Nasalization',
-                                ),
-                              ),
-                              ItemDividerWidget(marginBtm: 10),
-                              Container(
-                                // color: Colors.black,
-                                // width: 100,
-                                width: double.infinity,
-                                padding: (isLandscape == true)
-                                    ? EdgeInsets.symmetric(
-                                        horizontal: dynHeight / 4)
-                                    : EdgeInsets.zero,
-
-                                height: dynHeight / 2.5,
-                                child: (_skillList != null)
-                                    ? ListStarsWidget(
-                                        listItem: _skillList,
-                                        itemType: "skills")
-                                    : Container(
-                                        child: StarsShimmerWidget(),
+                            ),
+                            ItemDividerWidget(marginBtm: 10),
+                            Expanded(
+                              child: CustomScrollView(
+                                physics: BouncingScrollPhysics(),
+                                slivers: [
+                                  SliverList(
+                                      delegate: SliverChildListDelegate([
+                                    // Container(
+                                    //   child: Row(
+                                    //     children: [
+                                    //       IconButton(
+                                    //           onPressed: () {
+                                    //             Navigator.pop(context);
+                                    //           },
+                                    //           icon: Icon(
+                                    //             Icons.arrow_back,
+                                    //             color: Colors.white,
+                                    //           )),
+                                    //       Spacer(),
+                                    //     ],
+                                    //   ),
+                                    // ),
+                                    // ItemDividerWidget(marginBtm: 10),
+                                    Text(
+                                      "Skills",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24,
+                                        color: Colors.white,
+                                        fontFamily: 'Nasalization',
                                       ),
+                                    ),
+                                    ItemDividerWidget(marginBtm: 10),
+                                    Container(
+                                      // color: Colors.black,
+                                      // width: 100,
+                                      width: double.infinity,
+                                      padding: (isLandscape == true)
+                                          ? EdgeInsets.symmetric(
+                                              horizontal: dynHeight / 4)
+                                          : EdgeInsets.zero,
+
+                                      height: dynHeight / 2.5,
+                                      child: (_skillList != null)
+                                          ? ListStarsWidget(
+                                              listItem: _skillList,
+                                              itemType: "skills")
+                                          : Container(
+                                              child: StarsShimmerWidget(),
+                                            ),
+                                    ),
+                                    SizedBox(height: 15),
+                                    ItemDividerWidget(marginBtm: 10),
+                                    Text(
+                                      "Languages",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24,
+                                        color: Colors.white,
+                                        fontFamily: 'Nasalization',
+                                      ),
+                                    ),
+                                    ItemDividerWidget(marginBtm: 10),
+                                    Container(
+                                        padding: (isLandscape == true)
+                                            ? EdgeInsets.symmetric(
+                                                horizontal: dynHeight / 4)
+                                            : EdgeInsets.zero,
+                                        width: double.infinity,
+                                        height: dynHeight / 5,
+                                        child: (_languagesList != null)
+                                            ? ListStarsWidget(
+                                                listItem: _languagesList,
+                                                itemType: "languages")
+                                            : Container(
+                                                child: StarsShimmerWidget())),
+                                  ]))
+                                ],
                               ),
-                              SizedBox(height: 15),
-                              ItemDividerWidget(marginBtm: 10),
-                              Text(
-                                "Languages",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24,
-                                  color: Colors.white,
-                                  fontFamily: 'Nasalization',
-                                ),
-                              ),
-                              ItemDividerWidget(marginBtm: 10),
-                              Container(
-                                  padding: (isLandscape == true)
-                                      ? EdgeInsets.symmetric(
-                                          horizontal: dynHeight / 4)
-                                      : EdgeInsets.zero,
-                                  width: double.infinity,
-                                  height: dynHeight / 5,
-                                  child: (_languagesList != null)
-                                      ? ListStarsWidget(
-                                          listItem: _languagesList,
-                                          itemType: "languages")
-                                      : Container(child: StarsShimmerWidget())),
-                            ]))
+                            ),
                           ],
                         ),
                       );
