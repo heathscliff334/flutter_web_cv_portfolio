@@ -122,16 +122,18 @@ class _HomePageState extends State<HomePage> {
                                         Shimmer.fromColors(
                                           baseColor: Colors.white,
                                           highlightColor: Color(0xFFC300FF),
+                                          // highlightColor: Color(0xFF252E28),
                                           child: Container(
                                             width: 110,
                                             height: 110,
                                             decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                border: Border.all(
-                                                    color: Colors.white,
-                                                    width: 3),
-                                                borderRadius:
-                                                    BorderRadius.circular(100)),
+                                              color: Colors.white,
+                                              border: Border.all(
+                                                  color: Colors.white,
+                                                  width: 3),
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                            ),
                                           ),
                                         ),
                                         Container(
@@ -153,8 +155,8 @@ class _HomePageState extends State<HomePage> {
                                             //       ),
                                             //     )),
                                             child: Image(
-                                              image: NetworkImage(
-                                                  "https://media-exp1.licdn.com/dms/image/C5103AQHjVhRuL3yXgw/profile-displayphoto-shrink_200_200/0/1544581409377?e=1640217600&v=beta&t=LdMRsw9u4qPU6oaf4iQloowmQXWDgta6VRtU0vqy5Po"),
+                                              image: AssetImage(
+                                                  "assets/images/profile-picture.jpeg"),
                                               fit: BoxFit.cover,
                                               key: ValueKey(
                                                   new Random().nextInt(100)),
