@@ -294,7 +294,7 @@ class _HomePageState extends State<HomePage> {
                                     SizedBox(width: 10),
                                     SosmedButtonWidget(
                                       url:
-                                          "https://www.linkedin.com/in/kevin-laurence-hartono-6a61bb113/",
+                                          "https://www.linkedin.com/in/kevin-laurence-6a61bb113/",
                                       imgUrl:
                                           "https://image.flaticon.com/icons/png/512/174/174857.png",
                                       itemIcon: Icon(
@@ -317,7 +317,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     SizedBox(width: 10),
                                     SosmedButtonWidget(
-                                      url: "mailto:heathscliff334@gmail.com",
+                                      url: "mailto:kevin@laurenscodes.space",
                                       imgUrl:
                                           "https://cdn.pixabay.com/photo/2016/01/26/17/15/gmail-1162901_640.png",
                                       itemIcon: Icon(
@@ -378,7 +378,7 @@ class _HomePageState extends State<HomePage> {
                                     children: [
                                       Spacer(),
                                       Text(
-                                        "2021 \u00a9 Kevin Laurence. Powered by Flutter.",
+                                        "2021 \u00a9 Kevin Laurence. Powered by Flutter Wasm.",
                                         style: TextStyle(color: Colors.white70),
                                       )
                                     ],

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_web/domain/skills/model/skills_response.dart';
+import 'package:flutter_web/utils/exception_handlers.dart';
 
 class SkillsRepository {
   Dio _dio = new Dio();
@@ -15,27 +16,8 @@ class SkillsRepository {
       print("${_response.statusCode}");
       SkillsResponse _getSkill = SkillsResponse.fromJson(_response.data);
       return right(_getSkill);
-    } on DioError catch (e) {
-      // Error from Dio
-
-      print("Status Code: ${e.response?.statusCode}");
-      String errorMessage = e.response?.data;
-      switch (e.type) {
-        case DioErrorType.connectTimeout:
-          break;
-        case DioErrorType.sendTimeout:
-          break;
-        case DioErrorType.receiveTimeout:
-          break;
-        case DioErrorType.response:
-          errorMessage = e.response?.data["error"];
-          break;
-        case DioErrorType.cancel:
-          break;
-        case DioErrorType.other:
-          break;
-      }
-      return left(errorMessage);
+    } on DioException catch (e) {
+      return left(await ExceptionHandlers().getErrorDetail(e));
     }
   }
 }

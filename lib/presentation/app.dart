@@ -4,6 +4,7 @@ import 'package:flutter_web/presentation/projects/projects_details_page.dart';
 import 'package:flutter_web/presentation/projects/projects_page.dart';
 
 import 'package:flutter_web/presentation/skills/skills_page.dart';
+import 'package:page_transition/page_transition.dart';
 
 class App extends StatefulWidget {
   // const App({ Key? key }) : super(key: key);
@@ -19,9 +20,36 @@ class _AppState extends State<App> {
       initialRoute: "/",
       routes: {
         "/": (context) => HomePage(),
-        "/skills": (context) => SkillsPage(),
-        "/projects": (context) => ProjectsPage(),
-        "/projects/detail": (context) => ProjectsDetailsPage(),
+        // "/skills": (context) => SkillsPage(),
+        // "/projects": (context) => ProjectsPage(),
+        // "/projects/detail": (context) => ProjectsDetailsPage(),
+      },
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/skills':
+            return PageTransition(
+                child: SkillsPage(),
+                type: PageTransitionType.fade,
+                settings: settings,
+                reverseDuration: const Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500));
+          case '/projects':
+            return PageTransition(
+                child: ProjectsPage(),
+                type: PageTransitionType.fade,
+                settings: settings,
+                reverseDuration: const Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500));
+          case '/projects/detail':
+            return PageTransition(
+                child: ProjectsDetailsPage(),
+                type: PageTransitionType.fade,
+                settings: settings,
+                reverseDuration: const Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500));
+          default:
+            return null;
+        }
       },
       // onGenerateRoute: (settings) {
       //   if (settings.name == "/projects") {

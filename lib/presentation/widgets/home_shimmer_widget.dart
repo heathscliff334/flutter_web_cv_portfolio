@@ -117,7 +117,7 @@ class HomeShimmerWidget extends StatelessWidget {
                     children: [
                       Spacer(),
                       Text(
-                        "2021 \u00a9 Kevin Laurence. Powered by Flutter.",
+                        "2021 \u00a9 Kevin Laurence. Powered by Flutter  Wasm.",
                         style: TextStyle(color: Colors.white70),
                       )
                     ],
