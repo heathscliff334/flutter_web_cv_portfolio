@@ -8,15 +8,15 @@ import 'package:flutter_web/presentation/widgets/list_stars_widget.dart';
 import 'package:flutter_web/presentation/widgets/stars_shimmer_widget.dart';
 
 class SkillsPage extends StatefulWidget {
-  const SkillsPage({Key key}) : super(key: key);
+  const SkillsPage({Key? key}) : super(key: key);
 
   @override
   _SkillsPageState createState() => _SkillsPageState();
 }
 
 class _SkillsPageState extends State<SkillsPage> {
-  bool isLandscape;
-  double dynHeight, dynWidth;
+  bool? isLandscape;
+  double? dynHeight, dynWidth;
   var _skillList, _languagesList;
 
   @override
@@ -26,7 +26,7 @@ class _SkillsPageState extends State<SkillsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context).settings.arguments as Map;
+    final args = ModalRoute.of(context)?.settings.arguments as Map;
     print("ID : ${args['id']}");
     setState(() {
       // To detect the orientation of the screen (browser) to asign a dynamic height and width
@@ -77,8 +77,8 @@ class _SkillsPageState extends State<SkillsPage> {
                         print("Skill error ${state.errorMessage}");
                       } else if (state is SkillsGetSuccess) {
                         print("Skill get success");
-                        _skillList = state.getSkillsList.data.skills;
-                        _languagesList = state.getSkillsList.data.languages;
+                        _skillList = state.getSkillsList.data?.skills;
+                        _languagesList = state.getSkillsList.data?.languages;
                         // print(_skillList[0].skillName);
                         // for (var i = 0; i < _skillList.length; i++) {
                         //   print(
@@ -150,10 +150,10 @@ class _SkillsPageState extends State<SkillsPage> {
                                       width: double.infinity,
                                       padding: (isLandscape == true)
                                           ? EdgeInsets.symmetric(
-                                              horizontal: dynHeight / 4)
+                                              horizontal: dynHeight! / 4)
                                           : EdgeInsets.zero,
 
-                                      height: dynHeight / 2.5,
+                                      height: dynHeight! / 2.5,
                                       child: (_skillList != null)
                                           ? ListStarsWidget(
                                               listItem: _skillList,
@@ -178,10 +178,10 @@ class _SkillsPageState extends State<SkillsPage> {
                                     Container(
                                         padding: (isLandscape == true)
                                             ? EdgeInsets.symmetric(
-                                                horizontal: dynHeight / 4)
+                                                horizontal: dynHeight! / 4)
                                             : EdgeInsets.zero,
                                         width: double.infinity,
-                                        height: dynHeight / 5,
+                                        height: dynHeight! / 5,
                                         child: (_languagesList != null)
                                             ? ListStarsWidget(
                                                 listItem: _languagesList,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ItemDividerWidget extends StatelessWidget {
-  const ItemDividerWidget({Key key, @required this.marginBtm})
+  const ItemDividerWidget({Key? key, required this.marginBtm})
       : super(key: key);
   final double marginBtm;
   @override

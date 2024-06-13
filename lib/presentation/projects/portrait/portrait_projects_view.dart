@@ -4,11 +4,11 @@ import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class PortraitProjectsView extends StatelessWidget {
   const PortraitProjectsView({
-    Key key,
-    @required ScrollController scrollController,
-    @required this.myList,
-    @required this.dynHeight,
-    @required int currentMax,
+    Key? key,
+    required ScrollController scrollController,
+    required this.myList,
+    required this.dynHeight,
+    required int currentMax,
   })  : _scrollController = scrollController,
         _currentMax = currentMax,
         super(key: key);

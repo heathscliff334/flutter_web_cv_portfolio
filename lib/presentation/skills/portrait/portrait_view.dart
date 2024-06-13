@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web/presentation/widgets/item_divider_widget.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
 class PortraitView extends StatelessWidget {
   const PortraitView({
-    Key key,
-    @required skillList,
-    @required List<String> listLanguages,
-    @required this.dynWidth,
-    @required List<double> listStarsLanguages,
+    Key? key,
+    required skillList,
+    required List<String> listLanguages,
+    required this.dynWidth,
+    required List<double> listStarsLanguages,
   })  : _skillList = skillList,
         _listLanguages = listLanguages,
         _listStarsLanguages = listStarsLanguages,
@@ -41,7 +41,7 @@ class PortraitView extends StatelessWidget {
               Spacer(),
               SmoothStarRating(
                 rating: _listStarsLanguages[i],
-                isReadOnly: true,
+                // isReadOnly: true,
                 size: 25,
                 filledIconData: Icons.star,
                 halfFilledIconData: Icons.star_half,

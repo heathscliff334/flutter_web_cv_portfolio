@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
 class ListStarsWidget extends StatelessWidget {
   const ListStarsWidget({
-    Key key,
-    @required listItem,
-    @required itemType,
+    Key? key,
+    required listItem,
+    required itemType,
   })  : _listItem = listItem,
         _itemType = itemType,
         super(key: key);
@@ -38,7 +38,7 @@ class ListStarsWidget extends StatelessWidget {
                 rating: (_itemType == 'skills')
                     ? double.parse(_listItem[i].skillStar)
                     : double.parse(_listItem[i].languageStar),
-                isReadOnly: true,
+                // isReadOnly: true,
                 size: 25,
                 filledIconData: Icons.star,
                 halfFilledIconData: Icons.star_half,

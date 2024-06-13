@@ -14,21 +14,21 @@ import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ProjectsPage extends StatefulWidget {
-  ProjectsPage({Key key}) : super(key: key);
+  ProjectsPage({Key? key}) : super(key: key);
 
   @override
   _ProjectsPageState createState() => _ProjectsPageState();
 }
 
 class _ProjectsPageState extends State<ProjectsPage> {
-  bool isLandscape;
-  double dynHeight, dynWidth;
-  List myList;
+  bool? isLandscape;
+  double? dynHeight, dynWidth;
+  List? myList;
   var _projectList;
   ScrollController _scrollController = ScrollController();
   int _currentMax = 10;
   bool languageEn = true;
-  Timer _timer;
+  Timer? _timer;
 
   void popUpTimer(_startTime) {
     const oneSec = const Duration(seconds: 1);
@@ -60,13 +60,13 @@ class _ProjectsPageState extends State<ProjectsPage> {
                 ),
               ],
             ));
-    _timer.cancel();
+    _timer?.cancel();
     // setState(() {});
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer?.cancel();
     super.dispose();
   }
 
@@ -86,7 +86,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
   _getMoreData() {
     print("Load more data");
     for (int i = _currentMax; i < _currentMax + 10; i++) {
-      myList.add("item : ${i + 1}");
+      myList?.add("item : ${i + 1}");
     }
     _currentMax = _currentMax + 10;
     setState(() {});
@@ -218,14 +218,14 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                   ListProjectsLandscapeWidget(
                                       scrollController: _scrollController,
                                       projectList: _projectList,
-                                      dynHeight: dynHeight,
+                                      dynHeight: dynHeight!,
                                       languageEn: languageEn)
                                   :
                                   // For Phone Screen
                                   ListProjectsPortraitWidget(
                                       scrollController: _scrollController,
                                       projectList: _projectList,
-                                      dynHeight: dynHeight,
+                                      dynHeight: dynHeight!,
                                       languageEn: languageEn),
                             ],
                           ));

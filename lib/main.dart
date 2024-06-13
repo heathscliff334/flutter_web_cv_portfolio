@@ -7,7 +7,8 @@ void main() {
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
       primaryColor: Colors.black,
-      accentColor: Colors.black,
+      // accentColor: Colors.black,
+      colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black),
     ),
   ));
 }

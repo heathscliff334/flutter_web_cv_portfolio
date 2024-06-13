@@ -13,8 +13,8 @@ class ProjectsRepository {
       ProjectsResponse _getProject = ProjectsResponse.fromJson(_response.data);
       return right(_getProject);
     } on DioError catch (e) {
-      print("Status Code: ${e.response.statusCode}");
-      String errorMessage = e.response.data.toString();
+      print("Status Code: ${e.response?.statusCode}");
+      String errorMessage = e.response?.data;
       switch (e.type) {
         case DioErrorType.connectTimeout:
           break;
@@ -23,7 +23,7 @@ class ProjectsRepository {
         case DioErrorType.receiveTimeout:
           break;
         case DioErrorType.response:
-          errorMessage = e.response.data["error"];
+          errorMessage = e.response?.data["error"];
           break;
         case DioErrorType.cancel:
           break;

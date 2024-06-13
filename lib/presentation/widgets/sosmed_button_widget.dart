@@ -9,7 +9,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SosmedButtonWidget extends StatefulWidget {
   const SosmedButtonWidget(
-      {Key key, @required this.url, @required this.imgUrl, this.itemIcon})
+      {Key? key,
+      required this.url,
+      required this.imgUrl,
+      required this.itemIcon})
       : super(key: key);
   final String url;
   final String imgUrl;

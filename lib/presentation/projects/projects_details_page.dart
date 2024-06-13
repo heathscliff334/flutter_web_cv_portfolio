@@ -5,7 +5,7 @@ import 'package:flutter_web/presentation/widgets/item_divider_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProjectsDetailsPage extends StatefulWidget {
-  ProjectsDetailsPage({Key key}) : super(key: key);
+  ProjectsDetailsPage({Key? key}) : super(key: key);
 
   // ProjectsDetailsPage({Key key, @required this.arguments}) : super(key: key);
   // final arguments;
@@ -15,15 +15,15 @@ class ProjectsDetailsPage extends StatefulWidget {
 }
 
 class _ProjectsDetailsPageState extends State<ProjectsDetailsPage> {
-  bool isLandscape;
-  double dynHeight, dynWidth;
+  bool? isLandscape;
+  double? dynHeight, dynWidth;
   bool languageEn = true;
-  Map _projectDetails;
+  Map? _projectDetails;
   // String testUri = Uri.base.queryParameters[0];
   Color _buttonThemeColor = Colors.white;
   void _onHover(PointerEvent details) {
     setState(() {
-      _buttonThemeColor = Colors.grey[300];
+      _buttonThemeColor = Colors.grey.shade300;
     });
   }
 
@@ -64,9 +64,9 @@ class _ProjectsDetailsPageState extends State<ProjectsDetailsPage> {
     ),
   ];
   void _getArguments() {
-    final args = ModalRoute.of(context).settings.arguments as Map;
+    final args = ModalRoute.of(context)!.settings.arguments as Map;
     _projectDetails = args;
-    print("Arguments: ${_projectDetails['detail']}");
+    print("Arguments: ${_projectDetails?['detail']}");
   }
 
   @override
@@ -181,7 +181,7 @@ class _ProjectsDetailsPageState extends State<ProjectsDetailsPage> {
                                   delegate: SliverChildListDelegate([
                                 Container(
                                   width: double.infinity,
-                                  height: dynHeight / 2.5,
+                                  height: dynHeight! / 2.5,
                                   decoration: BoxDecoration(
                                     color: Colors.grey[300],
                                     // borderRadius: BorderRadius.circular(30),
@@ -206,7 +206,7 @@ class _ProjectsDetailsPageState extends State<ProjectsDetailsPage> {
                                   width: double.infinity,
                                   // color: Colors.red,
                                   child: Text(
-                                    "${_projectDetails['detail'].projectTitle}",
+                                    "${_projectDetails?['detail'].projectTitle}",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 22,
@@ -222,7 +222,7 @@ class _ProjectsDetailsPageState extends State<ProjectsDetailsPage> {
                                   width: double.infinity,
                                   // color: Colors.red,
                                   child: Text(
-                                    "${_projectDetails['detail'].projectHeadline}",
+                                    "${_projectDetails?['detail'].projectHeadline}",
                                     style: TextStyle(
                                         color: Colors.white70,
                                         fontWeight: FontWeight.w600,
@@ -238,8 +238,8 @@ class _ProjectsDetailsPageState extends State<ProjectsDetailsPage> {
                                   // color: Colors.red,
                                   child: Text(
                                     (languageEn == true)
-                                        ? "${_projectDetails['detail'].projectDescriptionEn}"
-                                        : "${_projectDetails['detail'].projectDescriptionId}",
+                                        ? "${_projectDetails?['detail'].projectDescriptionEn}"
+                                        : "${_projectDetails?['detail'].projectDescriptionId}",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
@@ -260,14 +260,14 @@ class _ProjectsDetailsPageState extends State<ProjectsDetailsPage> {
                                         child: Bounceable(
                                             onTap: () async {
                                               if (await canLaunch(
-                                                  _projectDetails['detail']
+                                                  _projectDetails?['detail']
                                                       .projectLink)) {
                                                 await launch(
-                                                    _projectDetails['detail']
+                                                    _projectDetails?['detail']
                                                         .projectLink,
                                                     forceSafariVC: false);
                                               } else {
-                                                throw 'Could not launch ${_projectDetails['detail'].projectLink}';
+                                                throw 'Could not launch ${_projectDetails?['detail'].projectLink}';
                                               }
                                             },
                                             child: Text(

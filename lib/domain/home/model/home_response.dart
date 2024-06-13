@@ -1,15 +1,15 @@
 class HomeResponse {
-  bool success;
-  List<Data> data;
+  bool? success;
+  List<Data>? data;
 
   HomeResponse({this.success, this.data});
 
   HomeResponse.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     if (json['data'] != null) {
-      data = new List<Data>();
+      data = <Data>[];
       json['data'].forEach((v) {
-        data.add(new Data.fromJson(v));
+        data!.add(new Data.fromJson(v));
       });
     }
   }
@@ -18,25 +18,25 @@ class HomeResponse {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['success'] = this.success;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Data {
-  String idUser;
-  String username;
-  String password;
-  String email;
-  String fullname;
-  String birthday;
-  String headline;
-  String description;
-  String dateCreated;
-  String lastLogin;
-  int isActive;
-  List<Interests> interests;
+  String? idUser;
+  String? username;
+  String? password;
+  String? email;
+  String? fullname;
+  String? birthday;
+  String? headline;
+  String? description;
+  String? dateCreated;
+  String? lastLogin;
+  int? isActive;
+  List<Interests>? interests;
 
   Data(
       {this.idUser,
@@ -65,9 +65,9 @@ class Data {
     lastLogin = json['last_login'];
     isActive = json['is_active'];
     if (json['interests'] != null) {
-      interests = new List<Interests>();
+      interests = <Interests>[];
       json['interests'].forEach((v) {
-        interests.add(new Interests.fromJson(v));
+        interests!.add(new Interests.fromJson(v));
       });
     }
   }
@@ -86,16 +86,16 @@ class Data {
     data['last_login'] = this.lastLogin;
     data['is_active'] = this.isActive;
     if (this.interests != null) {
-      data['interests'] = this.interests.map((v) => v.toJson()).toList();
+      data['interests'] = this.interests!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Interests {
-  String idInterest;
-  String interestName;
-  String userId;
+  String? idInterest;
+  String? interestName;
+  String? userId;
 
   Interests({this.idInterest, this.interestName, this.userId});
 

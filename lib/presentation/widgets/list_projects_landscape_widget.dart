@@ -7,11 +7,11 @@ import 'package:shimmer/shimmer.dart';
 
 class ListProjectsLandscapeWidget extends StatelessWidget {
   const ListProjectsLandscapeWidget({
-    Key key,
-    @required ScrollController scrollController,
-    @required projectList,
-    @required this.dynHeight,
-    @required this.languageEn,
+    Key? key,
+    required ScrollController scrollController,
+    required projectList,
+    required this.dynHeight,
+    required this.languageEn,
   })  : _scrollController = scrollController,
         _projectList = projectList,
         super(key: key);

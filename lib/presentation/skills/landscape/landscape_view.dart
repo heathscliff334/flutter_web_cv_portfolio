@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web/presentation/widgets/item_divider_widget.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
 class LandscapeView extends StatelessWidget {
   const LandscapeView({
-    Key key,
-    @required List<String> listSkills,
-    @required List<double> listStars,
-    @required List<String> listSkills2,
-    @required List<double> listStars2,
-    @required List<String> listLanguages,
-    @required this.dynWidth,
-    @required List<double> listStarsLanguages,
+    Key? key,
+    required List<String> listSkills,
+    required List<double> listStars,
+    required List<String> listSkills2,
+    required List<double> listStars2,
+    required List<String> listLanguages,
+    required this.dynWidth,
+    required List<double> listStarsLanguages,
   })  : _listSkills = listSkills,
         _listStars = listStars,
         _listSkills2 = listSkills2,
@@ -66,7 +66,7 @@ class LandscapeView extends StatelessWidget {
                       Spacer(),
                       SmoothStarRating(
                         rating: _listStars[i],
-                        isReadOnly: true,
+                        // isReadOnly: true,
                         size: 25,
                         filledIconData: Icons.star,
                         halfFilledIconData: Icons.star_half,
@@ -107,7 +107,7 @@ class LandscapeView extends StatelessWidget {
                       Spacer(),
                       SmoothStarRating(
                         rating: _listStars2[i],
-                        isReadOnly: true,
+                        // isReadOnly: true,
                         size: 25,
                         filledIconData: Icons.star,
                         halfFilledIconData: Icons.star_half,
@@ -158,7 +158,7 @@ class LandscapeView extends StatelessWidget {
                       SizedBox(width: 10),
                       SmoothStarRating(
                         rating: _listStarsLanguages[i],
-                        isReadOnly: true,
+                        // isReadOnly: true,
                         size: 25,
                         filledIconData: Icons.star,
                         halfFilledIconData: Icons.star_half,

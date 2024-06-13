@@ -27,8 +27,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isLandscape;
-  double dynHeight, dynWidth;
+  bool isLandscape = false;
+  double dynHeight = 0, dynWidth = 0;
   var _homeList, _interestsList;
 
   @override

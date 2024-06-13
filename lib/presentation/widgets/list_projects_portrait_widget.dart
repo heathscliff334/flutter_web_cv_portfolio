@@ -7,11 +7,11 @@ import 'package:shimmer/shimmer.dart';
 
 class ListProjectsPortraitWidget extends StatelessWidget {
   const ListProjectsPortraitWidget({
-    Key key,
-    @required ScrollController scrollController,
-    @required projectList,
-    @required this.dynHeight,
-    @required this.languageEn,
+    Key? key,
+    required ScrollController scrollController,
+    required projectList,
+    required this.dynHeight,
+    required this.languageEn,
   })  : _scrollController = scrollController,
         _projectList = projectList,
         super(key: key);
@@ -59,7 +59,7 @@ class ListProjectsPortraitWidget extends StatelessWidget {
                           Stack(
                             children: [
                               Shimmer.fromColors(
-                                baseColor: Colors.grey[300],
+                                baseColor: Colors.grey.shade300,
                                 highlightColor: Colors.white,
                                 child: Container(
                                   width: double.infinity,

@@ -3,8 +3,8 @@ import 'package:shimmer/shimmer.dart';
 
 class ProjectsPortraitShimmerWidget extends StatelessWidget {
   const ProjectsPortraitShimmerWidget({
-    Key key,
-    @required this.dynHeight,
+    Key? key,
+    required this.dynHeight,
   }) : super(key: key);
 
   final double dynHeight;
@@ -12,7 +12,7 @@ class ProjectsPortraitShimmerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey[300],
+      baseColor: Colors.grey.shade300,
       highlightColor: Colors.white,
       child: ListView.builder(
         padding: EdgeInsets.zero,

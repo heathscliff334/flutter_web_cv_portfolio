@@ -3,7 +3,7 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 
 class NavButtonWidget extends StatefulWidget {
   const NavButtonWidget(
-      {Key key, @required this.btnTitle, @required this.navRoute})
+      {Key? key, required this.btnTitle, required this.navRoute})
       : super(key: key);
   final String btnTitle;
   final String navRoute;

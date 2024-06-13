@@ -18,8 +18,8 @@ class SkillsRepository {
     } on DioError catch (e) {
       // Error from Dio
 
-      print("Status Code: ${e.response.statusCode}");
-      String errorMessage = e.response.data.toString();
+      print("Status Code: ${e.response?.statusCode}");
+      String errorMessage = e.response?.data;
       switch (e.type) {
         case DioErrorType.connectTimeout:
           break;
@@ -28,7 +28,7 @@ class SkillsRepository {
         case DioErrorType.receiveTimeout:
           break;
         case DioErrorType.response:
-          errorMessage = e.response.data["error"];
+          errorMessage = e.response?.data["error"];
           break;
         case DioErrorType.cancel:
           break;

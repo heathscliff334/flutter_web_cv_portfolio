@@ -1,15 +1,15 @@
 class ProjectsResponse {
-  bool success;
-  List<Data> data;
+  bool? success;
+  List<Data>? data;
 
   ProjectsResponse({this.success, this.data});
 
   ProjectsResponse.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     if (json['data'] != null) {
-      data = new List<Data>();
+      data = <Data>[];
       json['data'].forEach((v) {
-        data.add(new Data.fromJson(v));
+        data!.add(new Data.fromJson(v));
       });
     }
   }
@@ -18,22 +18,22 @@ class ProjectsResponse {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['success'] = this.success;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Data {
-  int idProject;
-  String projectTitle;
-  String projectHeadline;
-  String projectDescriptionId;
-  String projectDescriptionEn;
-  String projectLink;
-  String projectImage;
-  String dateCreated;
-  String userId;
+  int? idProject;
+  String? projectTitle;
+  String? projectHeadline;
+  String? projectDescriptionId;
+  String? projectDescriptionEn;
+  String? projectLink;
+  String? projectImage;
+  String? dateCreated;
+  String? userId;
 
   Data(
       {this.idProject,

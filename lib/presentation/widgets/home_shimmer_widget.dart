@@ -5,10 +5,10 @@ import 'package:shimmer/shimmer.dart';
 
 class HomeShimmerWidget extends StatelessWidget {
   const HomeShimmerWidget({
-    Key key,
-    @required this.isLandscape,
-    @required this.dynHeight,
-    @required this.dynWidth,
+    Key? key,
+    required this.isLandscape,
+    required this.dynHeight,
+    required this.dynWidth,
   }) : super(key: key);
 
   final bool isLandscape;
